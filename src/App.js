@@ -5,8 +5,8 @@ import { SearchForm } from './components/SearchForm';
 function App() {
   return (
     <div className="App">
-      <Counter count={0} />
-      <SearchForm />
+      <Counter count={12} />
+      <SearchForm initialSearchText="" onSearch={(text) => alert(`Looking for ${text}`)} />
     </div>
   );
 }
