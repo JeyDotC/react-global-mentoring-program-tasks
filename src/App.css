@@ -1,6 +1,8 @@
 :root {
   --form-control-heigh: 57px;
   --form-control-border-radious: 4px;
+
+  --color-primary: #F65261;
 }
 
 * {
@@ -12,6 +14,11 @@ body {
   font-family: 'Source Sans Pro';
   color: #E4E4E4;
   font-size: 17.28px;
+  padding: 20px;
+}
+
+button {
+  cursor: pointer;
 }
 
 input, button {
@@ -33,7 +40,7 @@ input, button {
 }
 
 .bg-primary {
-  background: #F65261;
+  background: var(--color-primary);
   color: white;
 }
 

@@ -1,0 +1,18 @@
+
+.genre-select > button {
+    margin-right: 30px;
+    padding: 0 0 19px;
+    background: none;
+    color: white;
+    border-radius: 0;
+    font-size: 16px;
+}
+
+.genre-select > button.active {
+    border-bottom: 4px solid var(--color-primary);
+    padding-bottom: calc(19px - 4px);
+}
+
+.genre-select:last-child {
+    margin-right: 0;
+}

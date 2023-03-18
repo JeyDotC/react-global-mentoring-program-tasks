@@ -9,7 +9,11 @@ function SearchForm({ initialSearchText, onSearch }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSearch(searchText);
+
+        // Do not search on empty string.
+        if(searchText && searchText.length > 0){
+            onSearch(searchText);
+        }
     }
 
     return (
