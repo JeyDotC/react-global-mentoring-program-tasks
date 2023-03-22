@@ -1,0 +1,58 @@
+:root {
+  --form-control-heigh: 57px;
+  --form-control-border-radious: 4px;
+
+  --color-primary: #F65261;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #555555;
+  font-family: 'Source Sans Pro';
+  color: #E4E4E4;
+  font-size: 17.28px;
+  padding: 20px;
+}
+
+button {
+  cursor: pointer;
+}
+
+input, button {
+  vertical-align: middle;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  border-style: none;
+}
+
+.btn {
+  height: var(--form-control-heigh);
+  padding: 18px 73px;
+
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: var(--form-control-border-radious);
+}
+
+.bg-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.form-input {
+  height: var(--form-control-heigh);
+  border-radius: var(--form-control-border-radious);
+  padding-left: 18px;
+  padding-right: 18px;
+  background: rgba(50, 50, 50, 0.8);
+  color: white;
+}
+
+.form-input:focus {
+  outline: none;
+}
