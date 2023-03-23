@@ -19,7 +19,7 @@ test('Counter Should Render With Undefined Initial Value', () => {
     expect(valueElement).toBeInTheDocument();
 });
 
-test.each([0, 1, -1, 12, 400])('Counter should render the initial value', (initialValue) => {
+test.each([0, 1, -1, 12, 400])('Counter should render the initial value: %i', (initialValue) => {
     // Act
     render(<Counter count={initialValue} />);
 
