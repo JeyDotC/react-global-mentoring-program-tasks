@@ -22,7 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      <Counter count={12} />
+      <h2>Learn React</h2>
+      <Counter />
       <SearchForm initialSearchText="" onSearch={handleSearch} />
       <GenreSelect
         genreNames={genreNames} 

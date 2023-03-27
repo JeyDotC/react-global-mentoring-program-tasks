@@ -9,7 +9,7 @@ class Counter extends React.Component {
         const { count } = props;
 
         this.state = {
-            count
+            count: count ?? 0
         };
     }
 
