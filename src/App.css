@@ -3,6 +3,8 @@
   --form-control-border-radious: 4px;
 
   --color-primary: #F65261;
+  --color-default: #E4E4E4;
+  --color-secondary: #979797;
 }
 
 * {
@@ -12,7 +14,7 @@
 body {
   background: #555555;
   font-family: 'Source Sans Pro';
-  color: #E4E4E4;
+  color: var(--color-default);
   font-size: 17.28px;
   padding: 20px;
 }
@@ -44,6 +46,26 @@ input, button {
   color: white;
 }
 
+.border {
+  border: solid 1px var(--color-default);
+}
+
+.border-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-primary {
+  border-color: var(--color-primary);
+}
+
+.border-rounded {
+  border-radius: var(--form-control-border-radious);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
 .form-input {
   height: var(--form-control-heigh);
   border-radius: var(--form-control-border-radious);
@@ -55,4 +77,12 @@ input, button {
 
 .form-input:focus {
   outline: none;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
 }

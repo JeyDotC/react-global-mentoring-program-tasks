@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css';
 import { Counter } from './components/Counter';
 import { GenreSelect } from './components/GenreSelect';
+import { MovieTitle } from './components/MovieTitle';
 import { SearchForm } from './components/SearchForm';
 
 const genreNames = [
@@ -29,6 +30,15 @@ function App() {
         genreNames={genreNames} 
         currentGenre={currentGenre}
         onSelect={handleGenreSelect}
+      />
+      <MovieTitle 
+        movieData={{ 
+          imageUrl: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/pulpfiction.2436_500x749.jpg?v=1620048742",
+          movieName: "Pulp Fiction",
+          releaseYear: 2004,
+          relevantGenres: ["Action", "Adventure"]
+        }} 
+        onClick={(movie) => console.log(movie)}
       />
     </div>
   );
