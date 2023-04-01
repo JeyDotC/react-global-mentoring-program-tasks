@@ -32,4 +32,8 @@ GenreSelect.propTypes = {
     onSelect: PropTypes.func
 }
 
+GenreSelect.defaultProps = {
+    genreNames: []
+}
+
 export { GenreSelect };
