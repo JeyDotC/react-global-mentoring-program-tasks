@@ -1,15 +1,25 @@
 import React from "react";
+import PropTypes from 'prop-types';
 
 const el = React.createElement;
 
 class Counter extends React.Component {
+
+    static propTypes = {
+        count: PropTypes.number
+    };
+
+    static defaultProps = {
+        count: 0
+    };
+
     constructor(props){
         super(props);
 
         const { count } = props;
 
         this.state = {
-            count: count ?? 0
+            count
         };
     }
 

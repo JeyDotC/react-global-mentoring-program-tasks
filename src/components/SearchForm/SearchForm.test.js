@@ -12,6 +12,16 @@ test('SearchForm should Render with the given initial Text', () => {
     expect(searchInput).toHaveValue('Hello');
 });
 
+test('SearchForm should Render When no initial Text is given', () => {
+    // Act
+    render(<SearchForm />);
+
+    // Assert
+    const searchInput = screen.getByRole('textbox');
+
+    expect(searchInput).toHaveValue('');
+});
+
 test('SearchForm should call the onSearchEvent when submit button is clicked.', () => {
     // Arrange
     const handleSearch = jest.fn();

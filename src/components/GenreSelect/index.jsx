@@ -1,3 +1,6 @@
+import classNames from 'classnames';
+import PropTypes from 'prop-types';
+
 import './GenreSelect.css';
 
 // This component is totally managed by the parent component, hence, has no
@@ -12,7 +15,7 @@ function GenreSelect({ genreNames, currentGenre, onSelect }){
             {genreNames?.map(genreName => (
                 <button 
                     key={genreName}
-                    className={`btn ${currentGenre === genreName ? 'active' : ''}`}
+                    className={classNames('btn', { active: currentGenre === genreName})}
                     type="button"
                     onClick={() => handleGenreButtonClick(genreName)}
                 >
@@ -21,6 +24,12 @@ function GenreSelect({ genreNames, currentGenre, onSelect }){
             ))}
         </div>
     )
+}
+
+GenreSelect.propTypes = {
+    genreNames: PropTypes.arrayOf(PropTypes.string), 
+    currentGenre: PropTypes.string, 
+    onSelect: PropTypes.func
 }
 
 export { GenreSelect };
