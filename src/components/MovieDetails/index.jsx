@@ -11,7 +11,7 @@ function formatDuration(durationInMinutes) {
     const hours = Math.floor(durationInMinutes / 60);
     const minutes = durationInMinutes - (hours * 60);
 
-    return `${hours > 0 ? `${hours}h` : ''} ${minutes}min`;
+    return `${hours > 0 ? `${hours}h ` : ''}${minutes}min`;
 }
 
 function MovieDetails({ movieData }) {
@@ -68,4 +68,4 @@ MovieDetails.propTypes = {
     }).isRequired,
 };
 
-export { MovieDetails }
+export { MovieDetails, formatDuration }
