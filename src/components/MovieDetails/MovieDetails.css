@@ -1,0 +1,14 @@
+.movie-details h1 {
+    margin: 0;
+    font-weight: 100;
+}
+
+.movie-rating > span {
+    font-size: 20px;
+    text-align: center;
+    border: solid 1px;
+    padding: 18px;
+    border-radius: 100%;
+    margin-left: 25px;
+    display: block;
+}

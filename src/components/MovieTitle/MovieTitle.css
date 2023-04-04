@@ -4,10 +4,6 @@
     width: var(--movie-title-width);
 }
 
-.movie-title .movie-title-image {
-    width: var(--movie-title-width);
-}
-
 .movie-title .movie-title-name {
     margin-top: 13px;
 }

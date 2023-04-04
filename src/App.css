@@ -19,6 +19,15 @@ body {
   padding: 20px;
 }
 
+p, span {
+  font-size: 20px;
+}
+
+h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
 button {
   cursor: pointer;
 }
@@ -66,6 +75,10 @@ input, button {
   color: var(--color-secondary);
 }
 
+.text-primary {
+  color: var(--color-primary);
+}
+
 .form-input {
   height: var(--form-control-heigh);
   border-radius: var(--form-control-border-radious);
@@ -81,8 +94,17 @@ input, button {
 
 .d-block {
   display: block;
+  width: 100%;
 }
 
 .d-flex {
   display: flex;
+}
+
+.ms-4 {
+  margin-left: 4em;
+}
+
+.mb-30p {
+  margin-bottom: 30px;
 }
