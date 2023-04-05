@@ -5,6 +5,7 @@ import { GenreSelect } from './components/GenreSelect';
 import { MovieTitle } from './components/MovieTitle';
 import { SearchForm } from './components/SearchForm';
 import { MovieDetails } from './components/MovieDetails';
+import { SortControl } from './components/SortControl';
 
 const genreNames = [
   "All",
@@ -26,11 +27,14 @@ const pulpFiction = {
 function App() {
 
   const [currentGenre, setCurrentGenre] = useState("All");
+  const [currentSortOption, setCurrentSortOption] = useState("Release Date");
 
   // This is a dummy callback to demonstrate the search has been triggered.
   const handleSearch = (text) => alert(`Looking for ${text}`);
 
   const handleGenreSelect = (selectedGenre) => setCurrentGenre(selectedGenre);
+
+  const handleSortControlChange = (sortOption) => setCurrentSortOption(sortOption);
 
   return (
     <div className="App">
@@ -41,6 +45,14 @@ function App() {
         genreNames={genreNames}
         currentGenre={currentGenre}
         onSelect={handleGenreSelect}
+      />
+      <SortControl id="Sort-Control"
+        options={[
+          "Release Date",
+          "Title",
+        ]}
+        currentSelection={currentSortOption}
+        onChange={handleSortControlChange}
       />
       <MovieTitle
         movieData={pulpFiction}
