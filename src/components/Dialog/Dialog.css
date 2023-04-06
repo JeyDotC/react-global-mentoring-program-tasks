@@ -1,5 +1,5 @@
 .dialog-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     background: rgba(35, 35, 35, 0.92);
@@ -11,6 +11,8 @@
 .dialog-overlay > .dialog {
     margin: auto auto;
     width: 80%;
+    background: var(--background-dark);
+    padding: 27px;
 }
 
 .dialog-overlay > .dialog .dialog-close {

@@ -2,6 +2,9 @@
   --form-control-heigh: 57px;
   --form-control-border-radious: 4px;
 
+  --background-default: #555555;
+  --background-dark: #232323;
+
   --color-primary: #F65261;
   --color-default: #E4E4E4;
   --color-secondary: #979797;
@@ -12,7 +15,7 @@
 }
 
 body {
-  background: #555555;
+  background: var(--background-default);
   font-family: 'Source Sans Pro';
   color: var(--color-default);
   font-size: 17.28px;
