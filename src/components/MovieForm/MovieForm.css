@@ -5,6 +5,10 @@
     align-content: flex-start;
 }
 
+.movie-form > div {
+    width: 100%;
+}
+
 .movie-form > div .form-control:nth-child(2n) {
     width: 35%;
 }

@@ -9,7 +9,7 @@ function MovieForm({ initialData, onSubmit }) {
 
     const handleFormSubmit = (event) => {
         event.stopPropagation();
-        event.preventdefault();
+        event.preventDefault();
 
         onSubmit && onSubmit(event);
     }
@@ -21,13 +21,13 @@ function MovieForm({ initialData, onSubmit }) {
                     name="movieName"
                     label="Title"
                     placeHolder="Movie Title"
-                    defaultValue={movieName}
+                    initialValue={movieName}
                 />
                 <FormControl
                     name="releaseYear"
                     label="Release Date"
                     placeHolder="Select Date"
-                    defaultValue={releaseYear}
+                    initialValue={releaseYear}
                 />
             </div>
             <div className="d-flex">
@@ -35,13 +35,13 @@ function MovieForm({ initialData, onSubmit }) {
                     name="imageUrl"
                     label="Movie URL"
                     placeHolder="https://"
-                    defaultValue={imageUrl}
+                    initialValue={imageUrl}
                 />
                 <FormControl
                     name="rating"
                     label="Rating"
                     placeHolder="7.8"
-                    defaultValue={rating}
+                    initialValue={rating}
                 />
             </div>
             <div className="d-flex">
@@ -49,20 +49,20 @@ function MovieForm({ initialData, onSubmit }) {
                     name="relevantGenres"
                     label="Genre"
                     placeHolder="Select Genre"
-                    defaultValue={relevantGenres}
+                    initialValue={relevantGenres}
                 />
                 <FormControl
                     name="durationInMinutes"
                     label="Runtime"
                     placeHolder="Minutes"
-                    defaultValue={durationInMinutes}
+                    initialValue={durationInMinutes}
                 />
             </div>
             <FormControl
                 name="description"
                 label="Overview"
                 placeHolder="Movie Description"
-                defaultValue={description}
+                initialValue={description}
                 multiline={true}
             />
 
