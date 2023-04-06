@@ -1,0 +1,14 @@
+.movie-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.movie-form > div .form-control:nth-child(2n) {
+    width: 35%;
+}
+.movie-form > div .form-control:nth-child(2n + 1) {
+    width: 60%;
+    margin-right: 30px;
+}

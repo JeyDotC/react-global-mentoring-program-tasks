@@ -1,6 +1,6 @@
 import { createPortal } from "react-dom";
 import './Dialog.css';
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 
 function Dialog({ show, title, children, onCloseButtonClicked }) {
     const handleCloseButtonClick = (e) => onCloseButtonClicked && onCloseButtonClicked(e);
@@ -25,11 +25,11 @@ function Dialog({ show, title, children, onCloseButtonClicked }) {
     );
 }
 
-// Dialog.propTypes = {
-//     show: PropTypes.bool.isRequired,
-//     title: PropTypes.oneOf([ PropTypes.element, PropTypes.string ]),
-//     onCloseButtonClicked: PropTypes.func,
-// };
+Dialog.propTypes = {
+    show: PropTypes.bool.isRequired,
+    title: PropTypes.oneOfType([ PropTypes.element, PropTypes.string ]),
+    onCloseButtonClicked: PropTypes.func,
+};
 
 Dialog.defaultProps = {
     show: false,
