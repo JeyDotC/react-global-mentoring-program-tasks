@@ -6,6 +6,7 @@ import { MovieTitle } from './components/MovieTitle';
 import { SearchForm } from './components/SearchForm';
 import { MovieDetails } from './components/MovieDetails';
 import { SortControl } from './components/SortControl';
+import { Dialog } from './components/Dialog';
 
 const genreNames = [
   "All",
@@ -28,6 +29,7 @@ function App() {
 
   const [currentGenre, setCurrentGenre] = useState("All");
   const [currentSortOption, setCurrentSortOption] = useState("Release Date");
+  const [showDialog, setShowDialog] = useState(false);
 
   // This is a dummy callback to demonstrate the search has been triggered.
   const handleSearch = (text) => alert(`Looking for ${text}`);
@@ -61,6 +63,14 @@ function App() {
       <MovieDetails
         movieData={pulpFiction}
       />
+      <button onClick={() => setShowDialog(true)}>Open Dialog</button>
+      <Dialog 
+        title={<h1>My Cool Dialog</h1>}
+        show={showDialog}
+        onCloseButtonClicked={() => setShowDialog(false)}
+      >
+        <p>Hello World!</p>
+      </Dialog>
     </div>
   );
 }
