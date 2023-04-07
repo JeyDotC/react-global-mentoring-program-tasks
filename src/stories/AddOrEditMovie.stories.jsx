@@ -19,7 +19,7 @@ const TemplateEdit = (args) => (
     </Dialog>
 );
 
-const TemplateDelete = (args) => (
+const TemplateDelete = () => (
     <Dialog show={true} title={<h1 className='mb-30p'>Delete Movie</h1>}>
         <p>Are you sure you want to delete this movie?</p>
         <div className='text-right'>
@@ -29,7 +29,7 @@ const TemplateDelete = (args) => (
 );
 
 export const AddMovie = TemplateAdd.bind({});
-AddMovie.args = {};
+AddMovie.args = MovieForm.defaultProps;
 
 export const EditMovie = TemplateEdit.bind({});
 EditMovie.args = {

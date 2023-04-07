@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { FormControl } from "../FormControl";
 
 import './MovieForm.css';
+import { Dropdown } from "../Dropdown";
 
 function MovieForm({ initialData, onSubmit }) {
 
@@ -48,9 +49,26 @@ function MovieForm({ initialData, onSubmit }) {
                 <FormControl
                     name="relevantGenres"
                     label="Genre"
-                    placeHolder="Select Genre"
                     initialValue={relevantGenres}
-                />
+                    useChildrenOnly
+                >
+                    <Dropdown 
+                        inputContent={<span className="pt-20p d-block">Select Genre</span>}
+                    >
+                        <label className="checkbox">
+                            <input type="checkbox" name="genres[0]" value="Crime" /> Crime
+                        </label>
+                        <label className="checkbox">
+                            <input type="checkbox" name="genres[1]" value="Documentary" /> Documentary
+                        </label>
+                        <label className="checkbox">
+                            <input type="checkbox" name="genres[2]" value="Horror" /> Horror
+                        </label>
+                        <label className="checkbox">
+                            <input type="checkbox" name="genres[3]" value="Comedy" /> Comedy
+                        </label>
+                    </Dropdown>
+                </FormControl>
                 <FormControl
                     name="durationInMinutes"
                     label="Runtime"

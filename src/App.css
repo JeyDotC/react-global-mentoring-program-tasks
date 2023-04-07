@@ -46,6 +46,32 @@ input, button, textarea {
   border-style: none;
 }
 
+label.checkbox {
+  display: block;
+  margin-bottom: 18px;
+}
+
+label.checkbox > input[type=checkbox] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+label.checkbox > input[type=checkbox]:checked {
+  background-color: var(--color-primary);
+}
+
+label.checkbox > input[type=checkbox]:checked::after {
+  content: "\2714";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  padding-left: 3px;
+  margin-top: -2px;
+}
+
 .btn {
   height: var(--form-control-heigh);
   padding: 18px 73px;
@@ -121,6 +147,10 @@ textarea.form-input {
   display: flex;
 }
 
+.d-none {
+  display: none;
+}
+
 .ms-4 {
   margin-left: 4em;
 }
@@ -139,4 +169,8 @@ textarea.form-input {
 
 .me-30p {
   margin-right: 30px;
+}
+
+.pt-20p {
+  padding-top: 20px;
 }

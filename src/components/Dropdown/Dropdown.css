@@ -1,0 +1,14 @@
+.dropdown-input > div {
+    margin-right: auto;
+}
+
+.dropdown-input > i {
+    font-size: 20px;
+    line-height: 3;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background: var(--background-dark);
+    padding: 16px 18px;
+}
