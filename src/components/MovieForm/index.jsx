@@ -56,16 +56,20 @@ function MovieForm({ initialData, onSubmit }) {
                         inputContent={<span className="pt-20p d-block">Select Genre</span>}
                     >
                         <label className="checkbox">
-                            <input type="checkbox" name="genres[0]" value="Crime" /> Crime
+                            <input type="checkbox" name="genres[0]" value="Crime" defaultChecked={relevantGenres?.some(c => c === "Crime")} />
+                            Crime
                         </label>
                         <label className="checkbox">
-                            <input type="checkbox" name="genres[1]" value="Documentary" /> Documentary
+                            <input type="checkbox" name="genres[1]" value="Documentary" defaultChecked={relevantGenres?.some(c => c === "Documentary")} />
+                            Documentary
                         </label>
                         <label className="checkbox">
-                            <input type="checkbox" name="genres[2]" value="Horror" /> Horror
+                            <input type="checkbox" name="genres[2]" value="Horror" defaultChecked={relevantGenres?.some(c => c === "Horror")} />
+                            Horror
                         </label>
                         <label className="checkbox">
-                            <input type="checkbox" name="genres[3]" value="Comedy" /> Comedy
+                            <input type="checkbox" name="genres[3]" value="Comedy" defaultChecked={relevantGenres?.some(c => c === "Comedy")} />
+                            Comedy
                         </label>
                     </Dropdown>
                 </FormControl>
@@ -86,7 +90,7 @@ function MovieForm({ initialData, onSubmit }) {
 
             <div className="text-right">
                 <button className="btn bg-none text-primary border border-primary me-13p">Reset</button>
-                <button className="btn bg-primary">Submit</button>
+                <button className="btn bg-primary" type="submit">Submit</button>
             </div>
         </form>
     );
