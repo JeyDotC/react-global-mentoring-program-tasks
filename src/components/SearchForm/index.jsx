@@ -1,9 +1,10 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import './SearchForm.css';
 
 function SearchForm({ initialSearchText, onSearch }) {
 
-    const [searchText, setSearchText] = useState(initialSearchText || '');
+    const [searchText, setSearchText] = useState(initialSearchText);
 
     const handleSearchInputChange = (event) => setSearchText(event.target.value);
 
@@ -11,7 +12,7 @@ function SearchForm({ initialSearchText, onSearch }) {
         event.preventDefault();
 
         // Do not search on empty string.
-        if(searchText && searchText.length > 0){
+        if(searchText && searchText.length > 0 && onSearch){
             onSearch(searchText);
         }
     }
@@ -31,5 +32,14 @@ function SearchForm({ initialSearchText, onSearch }) {
         </form>
     );
 }
+
+SearchForm.propTypes = {
+    initialSearchText: PropTypes.string,
+    onSearch: PropTypes.func
+};
+
+SearchForm.defaultProps = {
+    initialSearchText: ''
+};
 
 export { SearchForm };
