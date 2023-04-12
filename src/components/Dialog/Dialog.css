@@ -1,0 +1,25 @@
+.dialog-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(35, 35, 35, 0.92);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.dialog-overlay > .dialog {
+    margin: auto auto;
+    width: 80%;
+    background: var(--background-dark);
+    padding: 27px;
+}
+
+.dialog-overlay > .dialog .dialog-close {
+    text-align: end;
+}
+
+.dialog-overlay > .dialog .dialog-close > button {
+    background: none;
+    color: white;
+}

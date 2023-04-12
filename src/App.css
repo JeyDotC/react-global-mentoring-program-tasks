@@ -2,6 +2,9 @@
   --form-control-heigh: 57px;
   --form-control-border-radious: 4px;
 
+  --background-default: #555555;
+  --background-dark: #232323;
+
   --color-primary: #F65261;
   --color-default: #E4E4E4;
   --color-secondary: #979797;
@@ -9,11 +12,11 @@
 
 * {
   box-sizing: border-box;
+  font-family: 'Montserrat';
 }
 
 body {
-  background: #555555;
-  font-family: 'Source Sans Pro';
+  background: var(--background-default);
   color: var(--color-default);
   font-size: 17.28px;
   padding: 20px;
@@ -26,19 +29,47 @@ p, span {
 h1 {
   font-size: 40px;
   text-transform: uppercase;
+  font-weight: 100;
+  margin: 0;
 }
 
 button {
   cursor: pointer;
 }
 
-input, button {
+input, button, textarea {
   vertical-align: middle;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
   border-style: none;
+}
+
+label.checkbox {
+  display: block;
+  margin-bottom: 18px;
+}
+
+label.checkbox > input[type=checkbox] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border-radius: 2px;
+}
+
+label.checkbox > input[type=checkbox]:checked {
+  background-color: var(--color-primary);
+}
+
+label.checkbox > input[type=checkbox]:checked::after {
+  content: "\2714";
+  color: white;
+  font-size: 12px;
+  position: absolute;
+  padding-left: 3px;
+  margin-top: -2px;
 }
 
 .btn {
@@ -53,6 +84,10 @@ input, button {
 .bg-primary {
   background: var(--color-primary);
   color: white;
+}
+
+.bg-none {
+  background: none;
 }
 
 .border {
@@ -79,6 +114,14 @@ input, button {
   color: var(--color-primary);
 }
 
+.text-transform-uppercase {
+  text-transform: uppercase;
+}
+
+.text-right {
+  text-align: right;
+}
+
 .form-input {
   height: var(--form-control-heigh);
   border-radius: var(--form-control-border-radious);
@@ -91,6 +134,9 @@ input, button {
 .form-input:focus {
   outline: none;
 }
+textarea.form-input {
+  height: auto;
+}
 
 .d-block {
   display: block;
@@ -101,10 +147,30 @@ input, button {
   display: flex;
 }
 
+.d-none {
+  display: none;
+}
+
 .ms-4 {
   margin-left: 4em;
 }
 
+.me-13p {
+  margin-right: 13px;
+}
+
+.mb-13p {
+  margin-bottom: 13px;
+}
+
 .mb-30p {
   margin-bottom: 30px;
+}
+
+.me-30p {
+  margin-right: 30px;
+}
+
+.pt-20p {
+  padding-top: 20px;
 }
