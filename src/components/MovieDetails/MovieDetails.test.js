@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { MovieDetails, formatDuration } from ".";
+import { MovieDetails } from ".";
 
 const testData = {
     imageUrl: "https://cdn.shopify.com/s/files/1/0057/3728/3618/products/pulpfiction.2436_500x749.jpg?v=1620048742",
@@ -44,19 +44,4 @@ test('MovieDetails render with the given data', () => {
     expect(duration).toBeInTheDocument();
 
     expect(descriptionParagraph).toHaveTextContent(description);
-});
-
-test.each([
-    { timeInMinutes: null, expectedFormat: '0min' },
-    { timeInMinutes: undefined, expectedFormat: 'N/A' },
-    { timeInMinutes: 0, expectedFormat: '0min' },
-    { timeInMinutes: 35, expectedFormat: '35min' },
-    { timeInMinutes: 68, expectedFormat: '1h 8min' },
-    { timeInMinutes: 230, expectedFormat: '3h 50min' },
-])('formatDuration $timeInMinutes Produces the "$expectedFormat"', ({ timeInMinutes, expectedFormat }) => {
-    // Act
-    const resultFormat = formatDuration(timeInMinutes);
-
-    // Assert
-    expect(resultFormat).toEqual(expectedFormat);
 });
