@@ -22,7 +22,7 @@ test('SearchForm should Render When no initial Text is given', () => {
     expect(searchInput).toHaveValue('');
 });
 
-test('SearchForm should call the onSearchEvent when submit button is clicked.', () => {
+test('SearchForm should call the onSearchEvent when submit button is clicked.', async () => {
     // Arrange
     const handleSearch = jest.fn();
 
@@ -31,10 +31,8 @@ test('SearchForm should call the onSearchEvent when submit button is clicked.', 
     const submitButton = screen.getByRole('button');
 
     // Act
-    act(() => {
-        userEvent.type(searchInput, "Zenon's Farm");
-        fireEvent.click(submitButton);
-    });
+    await userEvent.type(searchInput, "Zenon's Farm");
+    fireEvent.click(submitButton);
 
     // Assert
     expect(handleSearch).toBeCalledTimes(1);

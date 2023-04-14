@@ -1,15 +1,15 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import './SearchForm.css';
+import { useRef } from 'react';
 
 function SearchForm({ initialSearchText, onSearch }) {
 
-    const [searchText, setSearchText] = useState(initialSearchText);
-
-    const handleSearchInputChange = (event) => setSearchText(event.target.value);
+    const inputRef = useRef(null);
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        const searchText = inputRef.current?.value;
 
         // Do not search on empty string.
         if(searchText && searchText.length > 0 && onSearch){
@@ -23,8 +23,9 @@ function SearchForm({ initialSearchText, onSearch }) {
                 className="form-input" 
                 type="text" 
                 placeholder="What do you want to watch?"
-                value={searchText}
-                onChange={handleSearchInputChange}
+                name="searchInput"
+                defaultValue={initialSearchText}
+                ref={inputRef}
             />
             <button className="btn bg-primary" type="submit">
                 Search
