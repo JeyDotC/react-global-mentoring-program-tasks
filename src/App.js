@@ -7,6 +7,7 @@ import { SearchForm } from './components/SearchForm';
 import { MovieDetails } from './components/MovieDetails';
 import { SortControl } from './components/SortControl';
 import { Dialog } from './components/Dialog';
+import { MovieListPage } from './components/MovieListPage';
 
 const genreNames = [
   "All",
@@ -26,6 +27,10 @@ const pulpFiction = {
 };
 
 function App() {
+
+  return (
+    <MovieListPage />
+  );
 
   const [currentGenre, setCurrentGenre] = useState("All");
   const [currentSortOption, setCurrentSortOption] = useState("Release Date");

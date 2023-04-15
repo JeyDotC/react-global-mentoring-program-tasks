@@ -1,0 +1,17 @@
+#main-content-tools > .genre-select {
+    /* Move the Sort Control to the Right. */
+    margin-right: auto;
+    /* Makes the red border overlap the tools border. */
+    margin-bottom: -2px;
+}
+
+#main-content-tools {
+    border-bottom: 1px solid var(--color-secondary);
+}
+
+#main-content-movies {
+    padding-top: 28px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 37px;
+}

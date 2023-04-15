@@ -19,7 +19,7 @@ body {
   background: var(--background-default);
   color: var(--color-default);
   font-size: 17.28px;
-  padding: 20px;
+  padding: 37px 58px;
 }
 
 p, span {
@@ -70,6 +70,12 @@ label.checkbox > input[type=checkbox]:checked::after {
   position: absolute;
   padding-left: 3px;
   margin-top: -2px;
+}
+
+section {
+  background-color: var(--background-dark);
+  margin-bottom: 30px;
+  padding: 20px 57px 47px 59px;
 }
 
 .btn {

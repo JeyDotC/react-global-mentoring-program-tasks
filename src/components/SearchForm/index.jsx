@@ -12,25 +12,30 @@ function SearchForm({ initialSearchText, onSearch }) {
         const searchText = inputRef.current?.value;
 
         // Do not search on empty string.
-        if(searchText && searchText.length > 0 && onSearch){
+        if (searchText && searchText.length > 0 && onSearch) {
             onSearch(searchText);
         }
     }
 
     return (
-        <form className="search-form" onSubmit={handleSubmit}>
-            <input 
-                className="form-input" 
-                type="text" 
-                placeholder="What do you want to watch?"
-                name="searchInput"
-                defaultValue={initialSearchText}
-                ref={inputRef}
-            />
-            <button className="btn bg-primary" type="submit">
-                Search
-            </button>
-        </form>
+        <>
+            <h1 className='mb-30p'>
+                Find Your Movie
+            </h1>
+            <form className="search-form" onSubmit={handleSubmit}>
+                <input
+                    className="form-input"
+                    type="text"
+                    placeholder="What do you want to watch?"
+                    name="searchInput"
+                    defaultValue={initialSearchText}
+                    ref={inputRef}
+                />
+                <button className="btn bg-primary" type="submit">
+                    Search
+                </button>
+            </form>
+        </>
     );
 }
 
