@@ -87,6 +87,11 @@ section {
   border-radius: var(--form-control-border-radious);
 }
 
+.icon-button {
+  background: none;
+  padding: 0;
+}
+
 .bg-primary {
   background: var(--color-primary);
   color: white;

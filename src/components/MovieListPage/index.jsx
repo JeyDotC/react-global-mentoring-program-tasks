@@ -165,10 +165,18 @@ function MovieListPage() {
      const handleSortControlChange = (criterion) => setSortCriterion(criterion);
      const handleMovieClick = (movieData) => setActiveMovie(movieData);
      const handleSearch = (searchTerm) => setSearchQuery(searchTerm);
+     const handleBackToSearch = () => setActiveMovie(undefined);
 
      return (
           <>
                <section id="heading-content">
+                    <div id="heading-content-tools" className="mb-30p">
+                         {activeMovie !== undefined && (
+                              <button id="back-to-search" className="icon-button text-primary" title="Return to search" onClick={handleBackToSearch}>
+                                   <i>&#9906;</i>
+                              </button>
+                         )}
+                    </div>
                     {activeMovie !== undefined
                          ? <MovieDetails movieData={activeMovie} />
                          : <SearchForm onSearch={handleSearch} />}

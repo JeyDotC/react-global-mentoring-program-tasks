@@ -1,3 +1,22 @@
+#heading-content {
+    background-image: url(/public/heading-background.png);
+}
+
+#heading-content:has(.movie-details) {
+    background-image: none;
+}
+
+#heading-content #heading-content-tools {
+    text-align: end;
+}
+
+#back-to-search > i {
+    transform: rotate(45deg);
+    font-size: 30px;
+    font-style: normal;
+    display: inline-block;
+}
+
 #main-content-tools > .genre-select {
     /* Move the Sort Control to the Right. */
     margin-right: auto;
