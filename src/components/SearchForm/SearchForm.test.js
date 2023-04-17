@@ -42,8 +42,9 @@ test('SearchForm should call the onSearchEvent when submit button is clicked.', 
 test('SearchForm should not call the onSearchEvent when submit button is clicked and search text is empty.', () => {
     // Arrange
     const handleSearch = jest.fn();
+    const handleClear = jest.fn();
 
-    render(<SearchForm initialSearchText={""} onSearch={handleSearch} />);
+    render(<SearchForm initialSearchText={""} onSearch={handleSearch} onClear={handleClear} />);
     const submitButton = screen.getByRole('button');
 
     // Act
@@ -53,6 +54,7 @@ test('SearchForm should not call the onSearchEvent when submit button is clicked
 
     // Assert
     expect(handleSearch).toBeCalledTimes(0);
+    expect(handleClear).toBeCalledTimes(1);
 });
 
 test('SearchForm should call the onSearchEvent when user hits Enter.', () => {
@@ -72,11 +74,12 @@ test('SearchForm should call the onSearchEvent when user hits Enter.', () => {
     expect(handleSearch).toBeCalledWith("Zenon's Farm"); 
 });
 
-test('SearchForm should not call the onSearchEvent when user hits Enter and search text is empty.', () => {
+test('SearchForm should call the onClear event when user hits Enter and search text is empty.', () => {
     // Arrange
     const handleSearch = jest.fn();
+    const handleClear = jest.fn();
 
-    render(<SearchForm initialSearchText={""} onSearch={handleSearch} />);
+    render(<SearchForm initialSearchText={""} onSearch={handleSearch} onClear={handleClear} />);
     const searchInput = screen.getByRole('textbox');
 
     // Act
@@ -86,4 +89,5 @@ test('SearchForm should not call the onSearchEvent when user hits Enter and sear
 
     // Assert
     expect(handleSearch).toBeCalledTimes(0);
+    expect(handleClear).toBeCalledTimes(1);
 });

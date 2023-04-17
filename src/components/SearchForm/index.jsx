@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import './SearchForm.css';
 import { useRef } from 'react';
 
-function SearchForm({ initialSearchText, onSearch }) {
+function SearchForm({ initialSearchText, onSearch, onClear }) {
 
     const inputRef = useRef(null);
 
@@ -14,6 +14,10 @@ function SearchForm({ initialSearchText, onSearch }) {
         // Do not search on empty string.
         if (searchText && searchText.length > 0 && onSearch) {
             onSearch(searchText);
+        }
+
+        if((!searchText || searchText.length === 0) && onClear){
+            onClear();
         }
     }
 
@@ -41,7 +45,8 @@ function SearchForm({ initialSearchText, onSearch }) {
 
 SearchForm.propTypes = {
     initialSearchText: PropTypes.string,
-    onSearch: PropTypes.func
+    onSearch: PropTypes.func,
+    onClear: PropTypes.func,
 };
 
 SearchForm.defaultProps = {

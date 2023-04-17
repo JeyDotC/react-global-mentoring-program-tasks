@@ -11,19 +11,14 @@ import { useMovieListQuery } from "../../hooks/useMovieListQuery";
 
 const genreNames = [
      "All",
+     "Action",
+     "Adventure",
      "Comedy",
-     "Romance",
-     "Cartoon"
+     "Drama",
+     "Thriller",
 ];
 
 function MovieListPage() {
-     /**
-      * search query
- sort criterion
- active genre
- movie list (array)
- selected movie (default to undefined or null)
-      */
      const [searchQuery, setSearchQuery] = useState();
      const [sortCriterion, setSortCriterion] = useState();
      const [activeGenre, setActiveGenre] = useState('All');
@@ -37,6 +32,7 @@ function MovieListPage() {
      const handleSortControlChange = (criterion) => setSortCriterion(criterion);
      const handleMovieClick = (movieData) => setActiveMovie(movieData);
      const handleSearch = (searchTerm) => setSearchQuery(searchTerm);
+     const handleSearchClear = () => setSearchQuery(undefined);
      const handleBackToSearch = () => setActiveMovie(undefined);
 
      return (
@@ -51,7 +47,11 @@ function MovieListPage() {
                     </div>
                     {activeMovie !== undefined
                          ? <MovieDetails movieData={activeMovie} />
-                         : <SearchForm onSearch={handleSearch} />}
+                         : <SearchForm
+                              initialSearchText={searchQuery}
+                              onSearch={handleSearch}
+                              onClear={handleSearchClear}
+                         />}
                </section>
 
                <section id="main-content">
