@@ -16,16 +16,22 @@ function useMovieListQuery({
     const cancelationTokenRef = useRef(null);
 
     useEffect(() => {
-        if(cancelationTokenRef.current !== null){
+        if (cancelationTokenRef.current !== null) {
             cancelationTokenRef.current();
         }
 
         async function doFetchMovies() {
-            const [promise, cancel] = fetchMovies({ searchQuery, sortCriterion, activeGenre });
-            cancelationTokenRef.current = cancel;
-            const response = await promise;
-            const result = await response.json();
-            setResult(result);
+            try {
+                const [promise, cancel] = fetchMovies({ searchQuery, sortCriterion, activeGenre });
+                cancelationTokenRef.current = cancel;
+                const response = await promise;
+                const result = await response.json();
+                setResult(result);
+            } catch (e) {
+                if(e.name !== "AbortError") {
+                    console.error(e);
+                }
+            }
         }
 
         doFetchMovies();

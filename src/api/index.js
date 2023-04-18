@@ -4,7 +4,8 @@ const baseUrl = 'http://localhost:4000';
 function sortParameter(sortCriterion) {
     switch(sortCriterion) {
         case "Release Date": return "&sortBy=release_date&sortOrder=desc";
-        default: return "&sortBy=title&sorOrder=asc";
+        case "Title": return "&sortBy=title&sortOrder=asc";
+        default: return "";
     }
 }
 

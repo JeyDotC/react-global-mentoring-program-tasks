@@ -10,6 +10,7 @@ function SortControl({ id, options, currentSelection, onChange }){
         <div className="sort-control">
             <label htmlFor={id} className="text-secondary">Sort by</label>
             <select id={id} onChange={handleSelectChange} value={currentSelection || ""}>
+                <option></option>
                 {options?.map(op => (
                     <option key={op} value={op}>{op.toUpperCase()}</option>
                 ))}
