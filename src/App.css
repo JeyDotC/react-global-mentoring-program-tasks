@@ -19,7 +19,7 @@ body {
   background: var(--background-default);
   color: var(--color-default);
   font-size: 17.28px;
-  padding: 20px;
+  padding: 37px 58px;
 }
 
 p, span {
@@ -72,6 +72,12 @@ label.checkbox > input[type=checkbox]:checked::after {
   margin-top: -2px;
 }
 
+section {
+  background-color: var(--background-dark);
+  margin-bottom: 30px;
+  padding: 20px 57px 47px 59px;
+}
+
 .btn {
   height: var(--form-control-heigh);
   padding: 18px 73px;
@@ -79,6 +85,11 @@ label.checkbox > input[type=checkbox]:checked::after {
   text-align: center;
   text-transform: uppercase;
   border-radius: var(--form-control-border-radious);
+}
+
+.icon-button {
+  background: none;
+  padding: 0;
 }
 
 .bg-primary {

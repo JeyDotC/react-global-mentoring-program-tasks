@@ -7,6 +7,7 @@ import { SearchForm } from './components/SearchForm';
 import { MovieDetails } from './components/MovieDetails';
 import { SortControl } from './components/SortControl';
 import { Dialog } from './components/Dialog';
+import { MovieListPage } from './components/MovieListPage';
 
 const genreNames = [
   "All",
@@ -27,51 +28,8 @@ const pulpFiction = {
 
 function App() {
 
-  const [currentGenre, setCurrentGenre] = useState("All");
-  const [currentSortOption, setCurrentSortOption] = useState("Release Date");
-  const [showDialog, setShowDialog] = useState(false);
-
-  // This is a dummy callback to demonstrate the search has been triggered.
-  const handleSearch = (text) => alert(`Looking for ${text}`);
-
-  const handleGenreSelect = (selectedGenre) => setCurrentGenre(selectedGenre);
-
-  const handleSortControlChange = (sortOption) => setCurrentSortOption(sortOption);
-
   return (
-    <div className="App">
-      <h2>Learn React</h2>
-      <Counter />
-      <SearchForm initialSearchText="" onSearch={handleSearch} />
-      <GenreSelect
-        genreNames={genreNames}
-        currentGenre={currentGenre}
-        onSelect={handleGenreSelect}
-      />
-      <SortControl id="Sort-Control"
-        options={[
-          "Release Date",
-          "Title",
-        ]}
-        currentSelection={currentSortOption}
-        onChange={handleSortControlChange}
-      />
-      <MovieTitle
-        movieData={pulpFiction}
-        onClick={(movie) => console.log(movie)}
-      />
-      <MovieDetails
-        movieData={pulpFiction}
-      />
-      <button onClick={() => setShowDialog(true)}>Open Dialog</button>
-      <Dialog 
-        title={<h1>My Cool Dialog</h1>}
-        show={showDialog}
-        onCloseButtonClicked={() => setShowDialog(false)}
-      >
-        <p>Hello World!</p>
-      </Dialog>
-    </div>
+    <MovieListPage />
   );
 }
 
