@@ -14,31 +14,53 @@ test('Dropdown renders with content with hidden menu', () => {
     // Assert
     const inputContent = screen.getByRole('textbox');
     const listItem = screen.getByText('Menu Item');
-    const menuContainer = container.querySelector('.dropdown-menu.d-none');
+    const menuContainer = container.querySelector('.dropdown-menu');
 
     expect(inputContent).toBeInTheDocument();
     expect(listItem).toBeInTheDocument();
-    expect(menuContainer).toBeInTheDocument();
+    expect(menuContainer).toHaveClass('d-none');
 });
 
-test('Dropdown displays menu container when heading element is clicked', () => {
-    // Arrange
+test('Dropdown renders with content with visible menu', () => {
+    // Act
     const { container } = render(
-        <Dropdown inputContent={<input placeholder="This is a combobox" />}>
+        <Dropdown inputContent={<input placeholder="This is a combobox" />} menuVisible={true}>
+            <ul>
+                <li>Menu Item</li>
+            </ul>
+        </Dropdown>
+    );
+
+    // Assert
+    const inputContent = screen.getByRole('textbox');
+    const listItem = screen.getByText('Menu Item');
+    const menuContainer = container.querySelector('.dropdown-menu');
+
+    expect(inputContent).toBeInTheDocument();
+    expect(listItem).toBeInTheDocument();
+    expect(menuContainer).not.toHaveClass('d-none');
+});
+
+test('Dropdown triggers onInputClicked when input content is clicked.', () => {
+    // Arrange
+    const handleInputClicked = jest.fn();
+
+    const { container } = render(
+        <Dropdown
+            inputContent={<input placeholder="This is a combobox" />}
+            onInputClick={handleInputClicked}
+        >
             <ul>
                 <li>Menu Item</li>
             </ul>
         </Dropdown>
     );
     const inputContent = screen.getByRole('textbox');
-    const menuContainer = container.querySelector('.dropdown-menu.d-none');
 
     // Act
-    act(() => {
-        fireEvent.click(inputContent);
-    });
+    fireEvent.click(inputContent);
 
     // Assert
-    expect(menuContainer.classList).not.toContain('d-none');
+    expect(handleInputClicked).toBeCalled();
 
 });

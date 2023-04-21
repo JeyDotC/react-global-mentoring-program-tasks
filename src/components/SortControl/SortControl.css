@@ -2,30 +2,15 @@
     text-transform: uppercase;
 }
 
-.sort-control>label {
-    margin-right: 30px;
+.sort-control .dropdown-input {
+    width: 210px;
 }
 
-.sort-control>select {
-    background: none;
-    color: white;
-    border: none;
-    outline: none;
-    padding-right: calc(13px + 7px);
-
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -o-appearance: none;
-    appearance: none;
+.sort-control .sort-control-option {
+    cursor: pointer;
+    padding-bottom: 2px;
 }
 
-.sort-control>select>option {
-    background-color: var(--color-secondary);
-}
-
-.sort-control>i {
-    font-size: 7px;
-    margin-left: -7px;
-    vertical-align: middle;
-    
+.sort-control .sort-control-option.active {
+    border-bottom: 1px solid var(--color-primary);
 }

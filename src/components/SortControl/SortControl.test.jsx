@@ -11,12 +11,15 @@ test('SortControl renders with the given options', () => {
     const currentSelection = "Title";
 
     // Act
-    render(<SortControl id={id} options={options} currentSelection={currentSelection} />);
+    render(<SortControl 
+        id={id} 
+        options={options} 
+        currentSelection={currentSelection} 
+    />);
 
     // Assert
-    const select = screen.getByLabelText('Sort by');
-    const option = screen.getByRole('option', { selected: true });
+    const [currentOptionDisplay, selectedOption] = screen.getAllByText('Title');
 
-    expect(select).toBeInTheDocument();
-    expect(option).toHaveValue(currentSelection);
+    expect(currentOptionDisplay).toBeInTheDocument();
+    expect(selectedOption).toHaveClass('active');
 });
