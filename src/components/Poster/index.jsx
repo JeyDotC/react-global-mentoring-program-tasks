@@ -1,8 +1,7 @@
 import './Poster.css';
+import { string } from 'prop-types';
 
-const fallbackImageUrl = "/Poster-Not-Found.png";
-
-function Poster({ imageUrl, movieName }) {
+function Poster({ imageUrl, movieName, fallbackImageUrl }) {
     const handleImageLoadError = (e) => {
         if (e.target.src !== fallbackImageUrl) {
             e.target.src = fallbackImageUrl
@@ -18,6 +17,16 @@ function Poster({ imageUrl, movieName }) {
             onError={handleImageLoadError}
         />
     );
+}
+
+Poster.propTypes = {
+    imageUrl: string, 
+    movieName: string, 
+    fallbackImageUrl: string,
+};
+
+Poster.defaultProps = {
+    fallbackImageUrl: "/Poster-Not-Found.png",
 }
 
 export { Poster }
