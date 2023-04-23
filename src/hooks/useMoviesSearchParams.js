@@ -1,13 +1,13 @@
 import { useSearchParams } from "react-router-dom";
 
 function useMoviesSearchParams() {
-    const [searchParams, doSetSearchParams] = useSearchParams({
+    const [originalSearchParams, doSetSearchParams] = useSearchParams({
         s: "",
         orderBy: "",
         genre: "All",
     });
 
-    const searchParamsData = [...searchParams.entries()].reduce(
+    const searchParamsData = [...originalSearchParams.entries()].reduce(
         (accumulate, [k, v]) => ({ ...accumulate, [k]: v }),
         {}
     );
@@ -22,6 +22,7 @@ function useMoviesSearchParams() {
     return [
         { searchQuery, sortCriterion, activeGenre },
         setSearchParams,
+        originalSearchParams,
     ]
 }
 

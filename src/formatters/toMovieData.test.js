@@ -25,6 +25,7 @@ test('toMovieData should convert server returned data into component valid objec
 
     // Assert
     expect(result).toEqual({
+        id: 353616,
         imageUrl: "https://image.tmdb.org/t/p/w500/fchHLsLjFvzAFSQykiMwdF1051.jpg",
         movieName: "Pitch Perfect 3",
         releaseYear: 2017,
