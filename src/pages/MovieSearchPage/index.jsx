@@ -1,13 +1,19 @@
+import { useSearchParams } from "react-router-dom";
 import { SearchForm } from "../../components/SearchForm";
-import { useMoviesSearchParams } from "../../hooks/useMoviesSearchParams";
 
 function MovieSearchPage() {
-    const [searchParams, setSearchParams] = useMoviesSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const { searchQuery, } = searchParams;
+    const searchQuery = searchParams.get('query') ?? '';
 
-    const handleSearch = (s) => setSearchParams({ s });
-    const handleSearchClear = () => setSearchParams({ s: "" });
+    const handleSearch = (query) => {
+        searchParams.set('query', query);
+        setSearchParams(searchParams);
+   };
+    const handleSearchClear = () => {
+        searchParams.delete('query');
+        setSearchParams(searchParams);
+   };
 
     return (
         <SearchForm
