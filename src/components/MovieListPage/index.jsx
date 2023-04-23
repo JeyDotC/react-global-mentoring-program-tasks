@@ -8,6 +8,8 @@ import { MovieTitle } from "../MovieTitle";
 import { MovieDetails } from "../MovieDetails";
 import { toMovieData } from "../../formatters";
 import { useMovieListQuery } from "../../hooks/useMovieListQuery";
+import { useSearchParams } from "react-router-dom";
+import { useMoviesSearchParams } from "../../hooks/useMoviesSearchParams";
 
 const genreNames = [
      "All",
@@ -19,20 +21,22 @@ const genreNames = [
 ];
 
 function MovieListPage() {
-     const [searchQuery, setSearchQuery] = useState();
-     const [sortCriterion, setSortCriterion] = useState();
-     const [activeGenre, setActiveGenre] = useState('All');
      const [activeMovie, setActiveMovie] = useState();
+
+     const [searchParams, setSearchParams] = useMoviesSearchParams();
+
+     const { searchQuery, sortCriterion, activeGenre } = searchParams;
 
      const { result } = useMovieListQuery({ searchQuery, sortCriterion, activeGenre });
 
      const { data: movieList } = result;
 
-     const handleGenreSelect = (genre) => setActiveGenre(genre);
-     const handleSortControlChange = (criterion) => setSortCriterion(criterion);
+     const handleGenreSelect = (genre) => setSearchParams({ genre });
+     const handleSortControlChange = (orderBy) => setSearchParams({ orderBy });
+     const handleSearch = (s) => setSearchParams({ s });
+     const handleSearchClear = () => setSearchParams({ s: "" });
+
      const handleMovieClick = (movieData) => setActiveMovie(movieData);
-     const handleSearch = (searchTerm) => setSearchQuery(searchTerm);
-     const handleSearchClear = () => setSearchQuery(undefined);
      const handleBackToSearch = () => setActiveMovie(undefined);
 
      return (
