@@ -1,16 +1,16 @@
-.sort-control {
+#sort-control {
     text-transform: uppercase;
 }
 
-.sort-control .dropdown-input {
+#sort-control .dropdown-input {
     width: 210px;
 }
 
-.sort-control .sort-control-option {
+#sort-control .sort-control-option {
     cursor: pointer;
     padding-bottom: 2px;
 }
 
-.sort-control .sort-control-option.active {
+#sort-control .sort-control-option.active {
     border-bottom: 1px solid var(--color-primary);
 }

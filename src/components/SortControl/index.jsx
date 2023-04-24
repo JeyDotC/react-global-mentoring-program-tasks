@@ -12,7 +12,7 @@ function SortControl({ id, options, currentSelection, onChange }) {
     const handleInputClicked = () => setMenuVisible(!menuVisible);
 
     return (
-        <div className="sort-control d-flex">
+        <div id="sort-control" className="d-flex">
             <label htmlFor={id} className="text-secondary pt-20p me-13p">Sort by</label>
             <div>
                 <Dropdown 
