@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 function useFetch(fetchAction, initialState, fetchActionParameters, triggers) {
     const [result, setResult] = useState(initialState);
+    const [error, setError] = useState();
 
     const cancelationTokenRef = useRef(null);
 
@@ -12,9 +13,14 @@ function useFetch(fetchAction, initialState, fetchActionParameters, triggers) {
 
         async function performAction() {
             try {
+                setError(undefined);
                 const [promise, cancel] = fetchAction(fetchActionParameters);
                 cancelationTokenRef.current = cancel;
                 const response = await promise;
+                if(!response.ok) {
+                    setError(response);
+                    return;
+                }
                 const result = await response.json();
                 setResult(result);
             } catch (e) {
@@ -31,7 +37,7 @@ function useFetch(fetchAction, initialState, fetchActionParameters, triggers) {
         return () => cancelationTokenRef.current && cancelationTokenRef.current();
     }, [fetchAction, ...triggers]);
 
-    return { result };
+    return { result, error };
 }
 
 export { useFetch }
