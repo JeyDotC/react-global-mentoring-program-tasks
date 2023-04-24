@@ -1,5 +1,6 @@
 #heading-content {
     background-image: url(/public/heading-background.png);
+    min-height: 396px;
 }
 
 #heading-content:has(.movie-details) {

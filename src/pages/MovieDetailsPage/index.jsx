@@ -35,7 +35,7 @@ function MovieDetailsPage() {
                 </Link>
             </div>
             {movie && <MovieDetails movieData={toMovieData(movie)} />}
-            {!movie && error && <>An error Occurred. <Link to={backToSearchUrl}>Back to search</Link></>}
+            {!movie && error && <>An error Occurred. <Link className="text-primary" to={backToSearchUrl}>Back to search</Link></>}
             {!movie && !error && <>Loading...</>}
         </>
     )
