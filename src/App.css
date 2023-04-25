@@ -4,6 +4,7 @@
 
   --background-default: #555555;
   --background-dark: #232323;
+  --background-secondary: rgba(96, 96, 96, 0.68);
 
   --color-primary: #F65261;
   --color-default: #E4E4E4;
@@ -87,6 +88,16 @@ section {
   border-radius: var(--form-control-border-radious);
 }
 
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-compact {
+  padding: 11px 18px;
+  line-height: 2;
+}
+
 .icon-button {
   background: none;
   padding: 0;
@@ -99,6 +110,10 @@ section {
 
 .bg-none {
   background: none;
+}
+
+.bg-secondary {
+  background: var(--background-secondary);
 }
 
 .border {
