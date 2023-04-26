@@ -10,6 +10,13 @@ const Template = (args) => (<Dropdown {...args} />);
 
 export const Default = Template.bind({});
 Default.args = {
-    inputContent: "Click Here to Show the Dropdown",
+    inputContent: "Menu Closed",
     children: "This is the menu."
+};
+
+export const Open = Template.bind({});
+Open.args = {
+    inputContent: "Menu Closed",
+    children: "This is the menu.",
+    menuVisible: true,
 };

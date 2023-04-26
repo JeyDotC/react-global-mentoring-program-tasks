@@ -3,10 +3,15 @@ import { FormControl } from "../FormControl";
 
 import './MovieForm.css';
 import { Dropdown } from "../Dropdown";
+import { useState } from "react";
 
 function MovieForm({ initialData, onSubmit }) {
 
     const { imageUrl, movieName, releaseYear, relevantGenres, rating, durationInMinutes, description } = initialData;
+
+    const [selectGenreDropdownOpen, setSelectGenreDropdownOpen] = useState(false);
+
+    const handleSelectGenreInputClicked = () => setSelectGenreDropdownOpen(!selectGenreDropdownOpen);
 
     const handleFormSubmit = (event) => {
         event.stopPropagation();
@@ -54,6 +59,8 @@ function MovieForm({ initialData, onSubmit }) {
                 >
                     <Dropdown 
                         inputContent={<span className="pt-20p d-block">Select Genre</span>}
+                        menuVisible={selectGenreDropdownOpen}
+                        onInputClick={handleSelectGenreInputClicked}
                     >
                         <label className="checkbox">
                             <input type="checkbox" name="genres[0]" value="Crime" defaultChecked={relevantGenres?.some(c => c === "Crime")} />

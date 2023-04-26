@@ -18,7 +18,12 @@ describe('Search', () => {
 describe('Sort', () => {
   it('Sorts Movies By Title', () => {
     cy.visit('/');
-    cy.get('#sort-control').select('Title');
+    cy.get('#sort-control .dropdown-input').click();
+
+    cy.get('#sort-control .dropdown-menu .sort-control-option')
+      .filter((index, element) => element.textContent.includes("Title"))
+      .click();
+
     cy.get('#main-content-movies .movie-title h3').should(($h3) => {
       const texts = $h3.map((index, el) => el.textContent).get();
       expect(texts).to.deep.eq([
@@ -34,7 +39,12 @@ describe('Sort', () => {
 
   it('Sorts Movies By Release Date', () => {
     cy.visit('/');
-    cy.get('#sort-control').select('Release Date');
+    cy.get('#sort-control .dropdown-input').click();
+
+    cy.get('#sort-control .dropdown-menu .sort-control-option')
+      .filter((index, element) => element.textContent.includes("Release Date"))
+      .click();
+
     cy.get('#main-content-movies .movie-title span.movie-title-release-year').should(($span) => {
       const texts = $span.map((index, el) => el.textContent).get();
       expect(texts).to.deep.eq([

@@ -1,21 +1,40 @@
 import PropTypes from "prop-types";
+import { Dropdown } from "../Dropdown";
 
 import './SortControl.css';
+import { useState } from "react";
+import classNames from "classnames";
 
-function SortControl({ id, options, currentSelection, onChange }){
+function SortControl({ id, options, currentSelection, onChange }) {
 
-    const handleSelectChange = (event) => onChange && onChange(event.target.value);
+    const [menuVisible, setMenuVisible] = useState(false);
+
+    const handleInputClicked = () => setMenuVisible(!menuVisible);
 
     return (
-        <div className="sort-control">
-            <label htmlFor={id} className="text-secondary">Sort by</label>
-            <select id={id} onChange={handleSelectChange} value={currentSelection || ""}>
-                <option></option>
-                {options?.map(op => (
-                    <option key={op} value={op}>{op.toUpperCase()}</option>
-                ))}
-            </select>
-            <i className="text-primary">&#9660;</i>
+        <div id="sort-control" className="d-flex">
+            <label htmlFor={id} className="text-secondary pt-20p me-13p">Sort by</label>
+            <div>
+                <Dropdown 
+                    inputContent={<span className="pt-20p d-block">{currentSelection}</span>}
+                    menuVisible={menuVisible}
+                    onInputClick={handleInputClicked}
+                    >
+                    {options?.map(op => (
+                        <div
+                            className={classNames("sort-control-option mb-13p", {active: op === currentSelection})}
+                            key={op}
+                            type="button"
+                            onClick={() => {
+                                setMenuVisible(false);
+                                onChange && onChange(op);
+                            }}
+                        >
+                            {op}
+                        </div>
+                    ))}
+                </Dropdown>
+            </div>
         </div>
     );
 }

@@ -10,7 +10,7 @@ function sortParameter(sortCriterion) {
 }
 
 function searchQueryParameter(searchQuery) {
-    if(searchQuery !== undefined && searchQuery.length > 0){
+    if(searchQuery !== undefined && searchQuery !== null && searchQuery.length > 0){
         return `&search=${searchQuery}&searchBy=title`;
     }
 
@@ -18,11 +18,27 @@ function searchQueryParameter(searchQuery) {
 }
 
 function activeGenreParameter(activeGenre) {
-    if(activeGenre !== undefined && activeGenre.length > 0 && activeGenre !== "All"){
+    if(activeGenre !== undefined && activeGenre !== null && activeGenre.length > 0 && activeGenre !== "All"){
         return `&filter=${activeGenre}`;
     }
 
     return "";
+}
+
+/**
+ * @param {RequestInfo|URL} input 
+ * @param {RequestInit|undefined} init 
+ * @returns {[Promise, () => void]}
+ */
+function doFetch(input, init) {
+    const controller = new AbortController();
+
+    const promise = fetch(
+        input, 
+        { ...init, signal: controller.signal }
+    );
+
+    return [promise, () => controller.abort()];
 }
 
 function fetchMovies({
@@ -30,14 +46,15 @@ function fetchMovies({
     sortCriterion,
     activeGenre,
 }) {
-    const controller = new AbortController();
-
-    const promise = fetch(
-        `${baseUrl}/movies?limit=6${sortParameter(sortCriterion)}${searchQueryParameter(searchQuery)}${activeGenreParameter(activeGenre)}`, 
-        { signal: controller.signal }
+    return doFetch(
+        `${baseUrl}/movies?limit=6${sortParameter(sortCriterion)}${searchQueryParameter(searchQuery)}${activeGenreParameter(activeGenre)}`
     );
-
-    return [promise, () => controller.abort()];
 }
 
-export { fetchMovies }
+function fetchMovieById(movieId) {
+    return doFetch(
+        `${baseUrl}/movies/${movieId}`
+    );
+}
+
+export { fetchMovies, fetchMovieById  }

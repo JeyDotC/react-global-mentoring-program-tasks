@@ -1,22 +1,25 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import './Dropdown.css'
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
-function Dropdown({ inputContent, children }) {
-    const [menuVisible, setMenuVisible] = useState(false);
-    const [menuWidth, setMenuWidth] = useState('100px');
-
+function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
     const inputRef = useRef(null);
+    /**
+     * @type {HTMLElement}
+     */
+    const menuRef = useRef(null);
 
     useEffect(() => {
-        if (menuVisible && inputRef.current !== null) {
-            const width = inputRef.current.getBoundingClientRect().width;
-            setMenuWidth(`${width}px`);
+        if (menuVisible && inputRef.current !== null && menuRef.current !== null) {
+            const { width } = inputRef.current.getBoundingClientRect();
+
+            menuRef.current.style.minWidth = `${width}px`;
         }
     }, [menuVisible]);
 
     const handleInputClicked = () => {
-        setMenuVisible(!menuVisible);
+        onInputClick && onInputClick();
     }
 
     return (
@@ -34,11 +37,20 @@ function Dropdown({ inputContent, children }) {
                 </i>
             </div>
 
-            <div className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })} style={{ width: menuWidth }}>
+            <div 
+                className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })} 
+                ref={menuRef}
+            >
                 {children}
             </div>
         </>
     );
 }
+
+Dropdown.propTypes = {
+    inputContent: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
+    menuVisible: PropTypes.bool, 
+    onInputClick: PropTypes.func,
+};
 
 export { Dropdown }

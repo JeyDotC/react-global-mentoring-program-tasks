@@ -1,3 +1,4 @@
 .movie-poster.size-normal {
     width: 323px;
+    min-height: 483px;
 }

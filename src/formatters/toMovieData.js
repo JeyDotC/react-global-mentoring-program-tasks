@@ -1,4 +1,5 @@
 function toMovieData({
+    id,
     poster_path: imageUrl,
     title: movieName,
     release_date,
@@ -8,13 +9,14 @@ function toMovieData({
     overview: description,
 }) {
     return {
-         imageUrl,
-         movieName,
-         releaseYear: Number(release_date.split('-')[0]),
-         relevantGenres,
-         rating,
-         durationInMinutes,
-         description,
+        id,
+        imageUrl,
+        movieName,
+        releaseYear: Number(release_date.split('-')[0]),
+        relevantGenres,
+        rating,
+        durationInMinutes,
+        description,
     }
 }
 
