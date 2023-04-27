@@ -47,6 +47,10 @@ input, button, textarea {
   border-style: none;
 }
 
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 label.checkbox {
   display: block;
   margin-bottom: 18px;
@@ -86,6 +90,11 @@ section {
   text-align: center;
   text-transform: uppercase;
   border-radius: var(--form-control-border-radious);
+}
+
+.btn[disabled] {
+  opacity: 75%;
+  cursor: default;
 }
 
 a.btn {
