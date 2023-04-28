@@ -3,12 +3,15 @@ import './Dropdown.css'
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
+function Dropdown({ inputContent, children, menuVisible, onInputClick, onBlur }) {
     const inputRef = useRef(null);
     /**
      * @type {HTMLElement}
      */
     const menuRef = useRef(null);
+
+    const menuClicked = useRef(false);
+
 
     useEffect(() => {
         if (menuVisible && inputRef.current !== null && menuRef.current !== null) {
@@ -18,9 +21,32 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
         }
     }, [menuVisible]);
 
+    useEffect(() => {
+        if (!menuVisible) {
+            return;
+        }
+
+        if(menuVisible && menuClicked.current) {
+            menuClicked.current = false;
+        }
+
+        const notifyBlur = () => {
+            if(!menuClicked.current){
+                onBlur && onBlur();
+            }
+            menuClicked.current = false;
+        }
+        document.body.addEventListener('click', notifyBlur);
+
+        return () => document.body.removeEventListener('click', notifyBlur);
+    }, [menuVisible]);
+
     const handleInputClicked = () => {
+        menuClicked.current = true;
         onInputClick && onInputClick();
     }
+
+    const handleMenuClicked = () => menuClicked.current = true;
 
     return (
         <>
@@ -40,6 +66,7 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
             <div 
                 className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })} 
                 ref={menuRef}
+                onClick={handleMenuClicked}
             >
                 {children}
             </div>

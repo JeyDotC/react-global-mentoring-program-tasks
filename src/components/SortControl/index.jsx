@@ -11,6 +11,8 @@ function SortControl({ id, options, currentSelection, onChange }) {
 
     const handleInputClicked = () => setMenuVisible(!menuVisible);
 
+    const handleDropdownBlur = () => setMenuVisible(false);
+
     return (
         <div id="sort-control" className="d-flex">
             <label htmlFor={id} className="text-secondary pt-20p me-13p">Sort by</label>
@@ -19,6 +21,7 @@ function SortControl({ id, options, currentSelection, onChange }) {
                     inputContent={<span className="pt-20p d-block">{currentSelection}</span>}
                     menuVisible={menuVisible}
                     onInputClick={handleInputClicked}
+                    onBlur={handleDropdownBlur}
                     >
                     {options?.map(op => (
                         <div

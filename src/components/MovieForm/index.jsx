@@ -14,6 +14,7 @@ function MovieForm({ initialData, onSubmit }) {
     const [selectGenreDropdownOpen, setSelectGenreDropdownOpen] = useState(false);
 
     const handleSelectGenreInputClicked = () => setSelectGenreDropdownOpen(!selectGenreDropdownOpen);
+    const handleSelectGenreMenuBlur = () => setSelectGenreDropdownOpen(false);
 
     const handleValidate = ({
         movieName,
@@ -121,6 +122,7 @@ function MovieForm({ initialData, onSubmit }) {
                                 }
                                 menuVisible={selectGenreDropdownOpen}
                                 onInputClick={handleSelectGenreInputClicked}
+                                onBlur={handleSelectGenreMenuBlur}
                             >
                                 <label className="checkbox">
                                     <Field type="checkbox" name="relevantGenres" value="Crime" />
