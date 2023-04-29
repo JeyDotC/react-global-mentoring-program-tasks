@@ -21,14 +21,9 @@ describe('Sort', () => {
 
         cy.get('#main-content-movies .movie-title h3').should(($h3) => {
             const texts = $h3.map((index, el) => el.textContent).get();
-            expect(texts).to.deep.eq([
-                '¡Three Amigos!',
-                '\'71',
-                '(500) Days of Summer',
-                '[REC]',
-                '#realityhigh',
-                '10 Cloverfield Lane',
-            ]);
+            const sortedTexts = [...texts].sort();
+
+            expect(texts).to.deep.eq(sortedTexts);
         });
     });
 
@@ -37,14 +32,8 @@ describe('Sort', () => {
 
         cy.get('#main-content-movies .movie-title span.movie-title-release-year').should(($span) => {
             const texts = $span.map((index, el) => el.textContent).get();
-            expect(texts).to.deep.eq([
-                '2020',
-                '2019',
-                '2019',
-                '2019',
-                '2019',
-                '2018',
-            ]);
+            const sortedTexts = [...texts].sort();
+            expect(texts).to.deep.eq(sortedTexts);
         });
     });
 

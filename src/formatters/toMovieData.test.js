@@ -29,6 +29,7 @@ test('toMovieData should convert server returned data into component valid objec
         imageUrl: "https://image.tmdb.org/t/p/w500/fchHLsLjFvzAFSQykiMwdF1051.jpg",
         movieName: "Pitch Perfect 3",
         releaseYear: 2017,
+        releaseDate: "2017-12-21",
         relevantGenres: [
             "Comedy",
             "Music"
