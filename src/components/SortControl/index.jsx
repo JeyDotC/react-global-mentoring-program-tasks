@@ -9,9 +9,13 @@ function SortControl({ id, options, currentSelection, onChange }) {
 
     const [menuVisible, setMenuVisible] = useState(false);
 
-    const handleInputClicked = () => setMenuVisible(!menuVisible);
+    const handleInputClicked = () => {
+        setMenuVisible(!menuVisible);
+    }
 
-    const handleDropdownBlur = () => setMenuVisible(false);
+    const handleDropdownBlur = () => {
+        setMenuVisible(false);
+    }
 
     return (
         <div id="sort-control" className="d-flex">

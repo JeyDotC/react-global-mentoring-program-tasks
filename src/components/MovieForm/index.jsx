@@ -18,7 +18,7 @@ function MovieForm({ initialData, onSubmit }) {
 
     const handleValidate = ({
         movieName,
-        releaseYear,
+        releaseDate,
         imageUrl,
         rating,
         relevantGenres,
@@ -30,10 +30,10 @@ function MovieForm({ initialData, onSubmit }) {
             errors.movieName = "Required";
         }
 
-        if (!releaseYear || releaseYear.length === 0) {
-            errors.releaseYear = "Required";
-        } else if (isNaN(Date.parse(releaseYear))) {
-            errors.releaseYear = "Invalid Date format";
+        if (!releaseDate || releaseDate.length === 0) {
+            errors.releaseDate = "Required";
+        } else if (isNaN(Date.parse(releaseDate))) {
+            errors.releaseDate = "Invalid Date format";
         }
 
         if (!imageUrl || imageUrl.length === 0) {
@@ -66,7 +66,7 @@ function MovieForm({ initialData, onSubmit }) {
     };
 
     const handleFormSubmit = async (values, { setSubmitting, validateForm }) => {
-        await (onSubmit && onSubmit(values));
+        await (onSubmit && onSubmit({...values, releaseYear: Number(values.releaseDate.split('-')[0])}));
         setSubmitting(false);
     }
 
@@ -75,7 +75,6 @@ function MovieForm({ initialData, onSubmit }) {
             initialValues={initialData}
             validate={handleValidate}
             validateOnBlur={true}
-            isInitialValid={false}
             onSubmit={handleFormSubmit}
         >
             {({ isSubmitting, values, isValid }) => (
@@ -87,7 +86,7 @@ function MovieForm({ initialData, onSubmit }) {
                             placeHolder="Movie Title"
                         />
                         <FormControl
-                            name="releaseYear"
+                            name="releaseDate"
                             label="Release Date"
                             placeHolder="Select Date"
                             type="date"
@@ -181,7 +180,7 @@ MovieForm.propTypes = {
     initialData: PropTypes.shape({
         imageUrl: PropTypes.string,
         movieName: PropTypes.string,
-        releaseYear: PropTypes.number,
+        releaseDate: PropTypes.string,
         relevantGenres: PropTypes.arrayOf(PropTypes.string),
         rating: PropTypes.number,
         durationInMinutes: PropTypes.number,

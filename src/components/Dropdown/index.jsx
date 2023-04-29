@@ -26,22 +26,24 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick, onBlur })
             return;
         }
 
-        if(menuVisible && menuClicked.current) {
+        if (menuVisible && menuClicked.current) {
             menuClicked.current = false;
         }
 
         const notifyBlur = () => {
-            if(!menuClicked.current){
+            if (!menuClicked.current) {
                 onBlur && onBlur();
+            } else {
+                menuClicked.current = false;
             }
-            menuClicked.current = false;
         }
         document.body.addEventListener('click', notifyBlur);
 
         return () => document.body.removeEventListener('click', notifyBlur);
     }, [menuVisible]);
 
-    const handleInputClicked = () => {
+    const handleInputClicked = (e) => {
+        e.stopPropagation();
         menuClicked.current = true;
         onInputClick && onInputClick();
     }
@@ -63,8 +65,8 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick, onBlur })
                 </i>
             </div>
 
-            <div 
-                className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })} 
+            <div
+                className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })}
                 ref={menuRef}
                 onClick={handleMenuClicked}
             >
@@ -76,7 +78,7 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick, onBlur })
 
 Dropdown.propTypes = {
     inputContent: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    menuVisible: PropTypes.bool, 
+    menuVisible: PropTypes.bool,
     onInputClick: PropTypes.func,
 };
 

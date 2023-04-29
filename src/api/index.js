@@ -91,4 +91,40 @@ function addMovie({
     });
 }
 
-export { fetchMovies, fetchMovieById, addMovie }
+function updateMovie({
+    id,
+    title,
+    tagline,
+    vote_average,
+    vote_count,
+    release_date,
+    poster_path,
+    overview,
+    budget,
+    revenue,
+    runtime,
+    genres,
+}) {
+    return doFetch(`${baseUrl}/movies`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id,
+            title,
+            tagline,
+            vote_average,
+            vote_count,
+            release_date,
+            poster_path,
+            overview,
+            budget,
+            revenue,
+            runtime,
+            genres,
+        })
+    });
+}
+
+export { fetchMovies, fetchMovieById, addMovie, updateMovie }

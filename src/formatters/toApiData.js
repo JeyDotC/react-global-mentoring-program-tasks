@@ -2,7 +2,7 @@ function toApiData({
     id,
     imageUrl: poster_path,
     movieName: title,
-    releaseYear: release_date,
+    releaseDate: release_date,
     relevantGenres: genres,
     rating: vote_average,
     durationInMinutes: runtime,

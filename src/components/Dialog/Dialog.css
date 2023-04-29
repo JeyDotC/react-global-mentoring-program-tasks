@@ -23,3 +23,16 @@
     background: none;
     color: white;
 }
+
+/* Dialog being used as context Menu */
+.dialog-overlay.context {
+    background: none;
+    width: 0;
+    height: 0;
+}
+
+.dialog-overlay.context > .dialog {
+    width: auto;
+    position: fixed;
+    padding: 0;
+}

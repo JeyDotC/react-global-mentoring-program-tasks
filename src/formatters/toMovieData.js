@@ -13,6 +13,7 @@ function toMovieData({
         imageUrl,
         movieName,
         releaseYear: Number(release_date.split('-')[0]),
+        releaseDate: release_date,
         relevantGenres,
         rating,
         durationInMinutes,
