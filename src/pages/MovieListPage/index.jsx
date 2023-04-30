@@ -8,15 +8,7 @@ import { useMovieListQuery } from "../../hooks/useMovieListQuery";
 import { Link, Outlet, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { Dialog } from "../../components/Dialog";
-
-const genreNames = [
-     "All",
-     "Action",
-     "Adventure",
-     "Comedy",
-     "Drama",
-     "Thriller",
-];
+import { genreNames } from "../../constants";
 
 function MovieListPage() {
 
@@ -89,7 +81,7 @@ function MovieListPage() {
                <section id="main-content">
                     <div id="main-content-tools" className="d-flex">
                          <GenreSelect 
-                              genreNames={genreNames}
+                              genreNames={["All", ...genreNames]}
                               currentGenre={activeGenre}
                               onSelect={handleGenreSelect}
                          />

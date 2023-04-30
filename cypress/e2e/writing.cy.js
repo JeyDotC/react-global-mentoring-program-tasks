@@ -7,10 +7,14 @@ describe('Add', () => {
         cy.get('input[name=rating]').type('9.2');
         
         cy.get('.movie-form .dropdown-input').click();
-        cy.get('input[value=Crime]').click();
+        cy.get('input[value=Action]').click();
 
         cy.get('input[name=durationInMinutes]').type('120');
         cy.get('textarea[name=description]').type('The Pillar of Autumn exits slip-space and its crew discovers a large ringworld structure of unknown origin.');
+        cy.get('.movie-form button[type=submit]').click();
 
+        cy.visit('/?query=Halo: Combat Evolved');
+
+        cy.get('#main-content-movies .movie-title:first-child h3').should('contain', 'Halo: Combat Evolved');
     });
 });

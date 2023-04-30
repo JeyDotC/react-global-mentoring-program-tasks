@@ -13,6 +13,8 @@
     width: 80%;
     background: var(--background-dark);
     padding: 27px;
+    max-height: 95vh;
+    overflow-y: auto;
 }
 
 .dialog-overlay > .dialog .dialog-close {

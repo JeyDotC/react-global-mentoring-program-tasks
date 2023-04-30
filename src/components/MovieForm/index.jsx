@@ -5,6 +5,7 @@ import './MovieForm.css';
 import { Dropdown } from "../Dropdown";
 import { useState } from "react";
 import { Field, Form, Formik } from "formik";
+import { genreNames } from "../../constants";
 
 // Taken from: https://urlregex.com/
 const urlRegex = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www\.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%/.\w\-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[.!/\\\w]*))?)/;
@@ -66,7 +67,7 @@ function MovieForm({ initialData, onSubmit }) {
     };
 
     const handleFormSubmit = async (values, { setSubmitting, validateForm }) => {
-        await (onSubmit && onSubmit({...values, releaseYear: Number(values.releaseDate.split('-')[0])}));
+        await (onSubmit && onSubmit({ ...values, releaseYear: Number(values.releaseDate.split('-')[0]) }));
         setSubmitting(false);
     }
 
@@ -123,22 +124,12 @@ function MovieForm({ initialData, onSubmit }) {
                                 onInputClick={handleSelectGenreInputClicked}
                                 onBlur={handleSelectGenreMenuBlur}
                             >
-                                <label className="checkbox">
-                                    <Field type="checkbox" name="relevantGenres" value="Crime" />
-                                    Crime
-                                </label>
-                                <label className="checkbox">
-                                    <Field type="checkbox" name="relevantGenres" value="Documentary" />
-                                    Documentary
-                                </label>
-                                <label className="checkbox">
-                                    <Field type="checkbox" name="relevantGenres" value="Horror" />
-                                    Horror
-                                </label>
-                                <label className="checkbox">
-                                    <Field type="checkbox" name="relevantGenres" value="Comedy" />
-                                    Comedy
-                                </label>
+                                {genreNames.map((genre) => (
+                                    <label key={genre} className="checkbox">
+                                        <Field type="checkbox" name="relevantGenres" value={genre} />
+                                        {genre}
+                                    </label>
+                                ))}
                             </Dropdown>
                         </FormControl>
                         <FormControl
@@ -156,7 +147,7 @@ function MovieForm({ initialData, onSubmit }) {
                     />
 
                     <div className="text-right">
-                        <button 
+                        <button
                             className="btn bg-none text-primary border border-primary me-13p"
                             type="reset"
                         >
