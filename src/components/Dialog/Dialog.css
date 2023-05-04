@@ -13,6 +13,8 @@
     width: 80%;
     background: var(--background-dark);
     padding: 27px;
+    max-height: 95vh;
+    overflow-y: auto;
 }
 
 .dialog-overlay > .dialog .dialog-close {
@@ -22,4 +24,17 @@
 .dialog-overlay > .dialog .dialog-close > button {
     background: none;
     color: white;
+}
+
+/* Dialog being used as context Menu */
+.dialog-overlay.context {
+    background: none;
+    width: 0;
+    height: 0;
+}
+
+.dialog-overlay.context > .dialog {
+    width: auto;
+    position: fixed;
+    padding: 0;
 }

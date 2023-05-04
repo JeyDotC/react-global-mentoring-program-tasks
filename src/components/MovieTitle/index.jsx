@@ -3,13 +3,17 @@ import { Poster } from '../Poster';
 import './MovieTitle.css';
 import { MovieGenres } from '../MovieGenres';
 
-function MovieTitle({ movieData, onClick }) {
+function MovieTitle({ movieData, onClick, onContextMenu }) {
     const { imageUrl, movieName, releaseYear, relevantGenres } = movieData;
 
     const handleClick = () => onClick && onClick(movieData);
+    const handleContextMenu = (e) => {
+        e.preventDefault();
+        onContextMenu && onContextMenu(movieData, e);
+    }
 
     return (
-        <div className="movie-title" onClick={handleClick}>
+        <div className="movie-title" onClick={handleClick} onContextMenu={handleContextMenu}>
             <Poster imageUrl={imageUrl} movieName={movieName} />
             <div className="d-flex movie-title-name">
                 <h3>{movieName}</h3>

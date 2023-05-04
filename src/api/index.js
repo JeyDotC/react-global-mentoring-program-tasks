@@ -2,7 +2,7 @@ const baseUrl = 'http://localhost:4000';
 
 // http://localhost:4000/movies?sortBy=title&sortOrder=asc&search=La&searchBy=title&filter=Thriller&limit=6
 function sortParameter(sortCriterion) {
-    switch(sortCriterion) {
+    switch (sortCriterion) {
         case "Release Date": return "&sortBy=release_date&sortOrder=desc";
         case "Title": return "&sortBy=title&sortOrder=asc";
         default: return "";
@@ -10,7 +10,7 @@ function sortParameter(sortCriterion) {
 }
 
 function searchQueryParameter(searchQuery) {
-    if(searchQuery !== undefined && searchQuery !== null && searchQuery.length > 0){
+    if (searchQuery && searchQuery.length > 0) {
         return `&search=${searchQuery}&searchBy=title`;
     }
 
@@ -18,7 +18,7 @@ function searchQueryParameter(searchQuery) {
 }
 
 function activeGenreParameter(activeGenre) {
-    if(activeGenre !== undefined && activeGenre !== null && activeGenre.length > 0 && activeGenre !== "All"){
+    if (activeGenre && activeGenre.length > 0 && activeGenre !== "All") {
         return `&filter=${activeGenre}`;
     }
 
@@ -34,7 +34,7 @@ function doFetch(input, init) {
     const controller = new AbortController();
 
     const promise = fetch(
-        input, 
+        input,
         { ...init, signal: controller.signal }
     );
 
@@ -57,4 +57,74 @@ function fetchMovieById(movieId) {
     );
 }
 
-export { fetchMovies, fetchMovieById  }
+function addMovie({
+    title,
+    tagline,
+    vote_average,
+    vote_count,
+    release_date,
+    poster_path,
+    overview,
+    budget,
+    revenue,
+    runtime,
+    genres,
+}) {
+    return doFetch(`${baseUrl}/movies`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            title,
+            tagline,
+            vote_average,
+            vote_count,
+            release_date,
+            poster_path,
+            overview,
+            budget,
+            revenue,
+            runtime,
+            genres,
+        })
+    });
+}
+
+function updateMovie({
+    id,
+    title,
+    tagline,
+    vote_average,
+    vote_count,
+    release_date,
+    poster_path,
+    overview,
+    budget,
+    revenue,
+    runtime,
+    genres,
+}) {
+    return doFetch(`${baseUrl}/movies`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id,
+            title,
+            tagline,
+            vote_average,
+            vote_count,
+            release_date,
+            poster_path,
+            overview,
+            budget,
+            revenue,
+            runtime,
+            genres,
+        })
+    });
+}
+
+export { fetchMovies, fetchMovieById, addMovie, updateMovie }

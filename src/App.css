@@ -4,6 +4,7 @@
 
   --background-default: #555555;
   --background-dark: #232323;
+  --background-secondary: rgba(96, 96, 96, 0.68);
 
   --color-primary: #F65261;
   --color-default: #E4E4E4;
@@ -44,6 +45,10 @@ input, button, textarea {
   font-weight: 500;
   font-size: 20px;
   border-style: none;
+}
+
+input::-webkit-calendar-picker-indicator {
+  display: none;
 }
 
 label.checkbox {
@@ -87,6 +92,21 @@ section {
   border-radius: var(--form-control-border-radious);
 }
 
+.btn[disabled] {
+  opacity: 75%;
+  cursor: default;
+}
+
+a.btn {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-compact {
+  padding: 11px 18px;
+  line-height: 2;
+}
+
 .icon-button {
   background: none;
   padding: 0;
@@ -99,6 +119,10 @@ section {
 
 .bg-none {
   background: none;
+}
+
+.bg-secondary {
+  background: var(--background-secondary);
 }
 
 .border {
@@ -123,6 +147,10 @@ section {
 
 .text-primary {
   color: var(--color-primary);
+}
+
+.text-default {
+  color: var(--color-default);
 }
 
 .text-transform-uppercase {

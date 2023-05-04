@@ -3,12 +3,15 @@ import './Dropdown.css'
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
+function Dropdown({ inputContent, children, menuVisible, onInputClick, onBlur }) {
     const inputRef = useRef(null);
     /**
      * @type {HTMLElement}
      */
     const menuRef = useRef(null);
+
+    const menuClicked = useRef(false);
+
 
     useEffect(() => {
         if (menuVisible && inputRef.current !== null && menuRef.current !== null) {
@@ -18,9 +21,34 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
         }
     }, [menuVisible]);
 
-    const handleInputClicked = () => {
+    useEffect(() => {
+        if (!menuVisible) {
+            return;
+        }
+
+        if (menuVisible && menuClicked.current) {
+            menuClicked.current = false;
+        }
+
+        const notifyBlur = () => {
+            if (!menuClicked.current) {
+                onBlur && onBlur();
+            } else {
+                menuClicked.current = false;
+            }
+        }
+        document.body.addEventListener('click', notifyBlur);
+
+        return () => document.body.removeEventListener('click', notifyBlur);
+    }, [menuVisible]);
+
+    const handleInputClicked = (e) => {
+        e.stopPropagation();
+        menuClicked.current = true;
         onInputClick && onInputClick();
     }
+
+    const handleMenuClicked = () => menuClicked.current = true;
 
     return (
         <>
@@ -37,9 +65,10 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
                 </i>
             </div>
 
-            <div 
-                className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })} 
+            <div
+                className={classNames("dropdown-menu b-dark", { 'd-none': !menuVisible })}
                 ref={menuRef}
+                onClick={handleMenuClicked}
             >
                 {children}
             </div>
@@ -49,7 +78,7 @@ function Dropdown({ inputContent, children, menuVisible, onInputClick }) {
 
 Dropdown.propTypes = {
     inputContent: PropTypes.oneOfType([PropTypes.element, PropTypes.string]),
-    menuVisible: PropTypes.bool, 
+    menuVisible: PropTypes.bool,
     onInputClick: PropTypes.func,
 };
 
