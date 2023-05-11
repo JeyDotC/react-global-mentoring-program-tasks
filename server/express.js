@@ -41,7 +41,9 @@ app.use('*', async (req, res) => {
     );
 
     // populate `#app` element with `appHTML`
-    indexHTML = indexHTML.replace('<div id="root"></div>', `<div id="app">${appHTML}</div>`);
+    indexHTML = indexHTML.replace(
+        '<div id="app"></div>', 
+        `<script>window.___initialState = ${JSON.stringify({ movieList, currentMovie })};</script><div id="app">${appHTML}</div>`);
 
     // set header and status
     res.status(200);
