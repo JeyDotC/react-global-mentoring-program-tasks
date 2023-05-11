@@ -1,16 +1,16 @@
 describe('Search', () => {
   it('Finds Movies By Title', () => {
     cy.visit('/');
-    cy.get('input[name=searchInput]').type('pitch perfect 3{enter}');
+    cy.get('input[name=query]').type('pitch perfect 3{enter}');
     cy.get('#main-content-movies .movie-title:first-child h3').should('contain', 'Pitch Perfect 3');
   });
 
   it('Clears Results when search input is empty', () => {
     cy.visit('/');
-    cy.get('input[name=searchInput]').type('pitch perfect 3{enter}');
+    cy.get('input[name=query]').type('pitch perfect 3{enter}');
     cy.get('#main-content-movies .movie-title').should('have.length', 1);
 
-    cy.get('input[name=searchInput]').type('{selectall}{backspace}{enter}');
+    cy.get('input[name=query]').type('{selectall}{backspace}{enter}');
     cy.get('#main-content-movies .movie-title').should('have.length', 6);
   });
 });

@@ -1,7 +1,7 @@
 describe('Search', () => {
     it('Query parameter should trigger a search', () => {
         cy.visit('/?query=pitch perfect 3');
-        cy.get('input[name=searchInput]').should('have.value', 'pitch perfect 3');
+        cy.get('input[name=query]').should('have.value', 'pitch perfect 3');
         cy.get('#main-content-movies .movie-title:first-child h3').should('contain', 'Pitch Perfect 3');
     });
 
@@ -10,7 +10,7 @@ describe('Search', () => {
         cy.get('#main-content-movies .movie-title').should('have.length', 1);
 
         cy.visit('/?query=');
-        cy.get('input[name=searchInput]').should('have.value', '');
+        cy.get('input[name=query]').should('have.value', '');
         cy.get('#main-content-movies .movie-title').should('have.length', 6);
     });
 });
