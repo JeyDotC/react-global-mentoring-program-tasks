@@ -16,6 +16,12 @@ app.get(/\.(js|css|map|ico|json|png)$/, express.static(path.resolve(__dirname, '
 
 // for any other requests, send `index.html` as a response
 app.use('*', async (req, res) => {
+    res.contentType('text/html');
+
+    if(!fs.existsSync(path.resolve(__dirname, '../build'))){
+        res.status(500);
+        return res.send('build directory not found, please, run `npm run build` at least once before running this server.');
+    }
 
     // read `index.html` file
     let indexHTML = fs.readFileSync(path.resolve(__dirname, '../build/index.html'), {
@@ -38,7 +44,6 @@ app.use('*', async (req, res) => {
     indexHTML = indexHTML.replace('<div id="root"></div>', `<div id="app">${appHTML}</div>`);
 
     // set header and status
-    res.contentType('text/html');
     res.status(200);
 
     return res.send(indexHTML);
