@@ -1,3 +1,5 @@
+import _fetch from "isomorphic-fetch";
+
 const baseUrl = 'http://localhost:4000';
 
 // http://localhost:4000/movies?sortBy=title&sortOrder=asc&search=La&searchBy=title&filter=Thriller&limit=6
@@ -28,12 +30,12 @@ function activeGenreParameter(activeGenre) {
 /**
  * @param {RequestInfo|URL} input 
  * @param {RequestInit|undefined} init 
- * @returns {[Promise, () => void]}
+ * @returns {[Promise<Response>, () => void]}
  */
 function doFetch(input, init) {
     const controller = new AbortController();
 
-    const promise = fetch(
+    const promise = _fetch(
         input,
         { ...init, signal: controller.signal }
     );

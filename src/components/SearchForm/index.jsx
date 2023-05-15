@@ -31,7 +31,7 @@ function SearchForm({ initialSearchText, onSearch, onClear }) {
                     className="form-input"
                     type="text"
                     placeholder="What do you want to watch?"
-                    name="searchInput"
+                    name="query"
                     defaultValue={initialSearchText}
                     ref={inputRef}
                 />

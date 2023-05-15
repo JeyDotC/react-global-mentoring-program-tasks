@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add("visitAsHtml", (route, baseUrlOverride) => {
+    cy.request(`${baseUrlOverride}${route}`)
+      .its("body")
+      .then((html) => {
+        // remove the application code JS bundle
+        console.log(html);
+        html = html.replace(
+          /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+          ""
+        ).replace(
+            /href="\//gi,
+            `href="${baseUrlOverride}/`
+        );
+        
+        cy.document().invoke({ log: false }, "open");
+        cy.document().invoke({ log: false }, "write", html);
+        cy.document().invoke({ log: false }, "close");
+      });
+    // now we can use "normal" Cypress api on the page
+  });

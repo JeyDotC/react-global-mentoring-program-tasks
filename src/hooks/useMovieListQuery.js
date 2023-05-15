@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { fetchMovies } from "../api";
 import { useFetch } from "./useFetch";
+import { InitialStateContext } from "../contexts/InitialState";
 
 function useMovieListQuery({
     searchQuery,
@@ -7,14 +9,11 @@ function useMovieListQuery({
     activeGenre,
     key
 }) {
+    const { movieList } = useContext(InitialStateContext);
+
     return useFetch(
         fetchMovies,
-        {
-            totalAmount: 0,
-            data: [],
-            offset: 0,
-            limit: 6
-        },
+        movieList,
         {
             searchQuery,
             sortCriterion,

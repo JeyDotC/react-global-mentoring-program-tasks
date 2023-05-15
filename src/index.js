@@ -4,12 +4,18 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+const reactDom = (
   <React.StrictMode>
     <App />
   </React.StrictMode>
 );
+
+if(process.env.NODE_ENV === "development"){
+  const root = ReactDOM.createRoot(document.getElementById('app'));
+  root.render(reactDom);
+}else {
+  ReactDOM.hydrateRoot(document.getElementById('app'), reactDom);
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

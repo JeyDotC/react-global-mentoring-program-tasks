@@ -1,7 +1,3 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -39,32 +35,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## `npm run server`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Runs a production version of the app and includes some basic Server Side Rendering.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Warning:** In order to run this command, you must first run `npm run build` at least once. No need to run it every time, only when client side code changes.
 
-### Code Splitting
+## `npm run cypress`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Opens a cypress testing suite, it allows to run end-to-end tests.
 
-### Analyzing the Bundle Size
+### Before running cypress
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. Make sure you have run `npm run build` at least once.
+2. Run: `npm run start`
+3. Run (in a different console): `npm run server`
+4. Run (in a different console): The API server. Usually, all you need is go to the place where you have the server clone and run `npm run start`.
 
-### Making a Progressive Web App
+### Available specs
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* navigation: Tests the site by modifying the URL and checking if it has the desired effect.
+* spec: Tests the navigation controls by clicking in the necessary buttons.
+* ssr: Navigates to the SSR-enabled site (localhost:9001) and checks if the SSR works. It deletes every script upon page rendering.
+* writing: Tests the edit/update capabilities in the App.
